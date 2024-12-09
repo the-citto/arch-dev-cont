@@ -6,22 +6,23 @@ RUN pacman-key --init
 
 RUN pacman -Syyu --noconfirm
 
+RUN pacman -S --noconfirm make git
+
+RUN pacman -S --noconfirm tmux
+RUN pacman -S --noconfirm \
+    neovim \
+    ripgrep fd wget luarocks \
+    python-pynvim
+
+
 RUN pacman -S --noconfirm sudo
 
-RUN useradd -m -G wheel $user
-
-RUN pacman -S --noconfirm \
-    pacman-contrib \
-    make git \
-    tmux \
-    neovim \
-    ripgrep fd wget luarocks
-
+RUN pacman -S --noconfirm pacman-contrib
 RUN paccache -rk0
 
 RUN echo " %wheel ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/wheel
-
 RUN visudo -c /etc/sudoers.d/wheel
+RUN useradd -m -G wheel $user
 
 USER $user
 

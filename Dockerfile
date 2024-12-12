@@ -26,6 +26,8 @@ RUN useradd -m -G wheel $user
 
 USER $user
 
+VOLUME /home/$user
+
 # RUN mkdir -p ~/.tmux/plugins \
 #     && mkdir -p ~/.config/tmux \
 #     && wget -P ~/.config/tmux https://github.com/the-citto/tmux-conf/raw/refs/heads/main/tmux.conf

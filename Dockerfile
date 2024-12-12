@@ -1,4 +1,4 @@
-FROM archlinux:latest
+FROM docker.io/library/archlinux:latest
 
 ARG user
 
